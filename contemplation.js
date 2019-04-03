@@ -39,7 +39,7 @@ const toggleEditMode = () => {
 
 editButton.onclick = e => {
   focused = currNewThoughtInput
-  currNewThoughtInput.value = currThought.value
+  currThoughtInput.value = currThought.value
 }
 
 let currThoughtIndex = 0
@@ -68,7 +68,7 @@ const switchFocus = () => {
   if (focused === currNoteInput) {
     focused = newThoughtInput
     newThoughtInput.focus()
-  } else if (focused === currNoteInput) {
+  } else if (focused === newThoughtInput) {
     currNoteInput.focus()
     focused = currNoteInput
   }

@@ -40,7 +40,7 @@ newThoughtInput.onfocus = e => {
 const toggleEditMode = () => {
   currThought.classList.toggle('behind')
   currThoughtInput.classList.toggle('behind')
-  editDeleteContainer.classList.add('behind')
+  //editDeleteContainer.classList.add('behind')
 }
 
 editButton.onclick = e => {

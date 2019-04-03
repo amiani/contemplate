@@ -49,9 +49,10 @@
       }
       #currThought {
         padding: 1px;
+        flex-grow: 1;
         border-bottom: 2px solid transparent;
       }
-      #currThought:hover > #editDeleteContainer {
+      #currThought:hover ~ #editDeleteContainer {
         visibility: visible;
       }
       #currThoughtInput {
@@ -63,12 +64,22 @@
       #editDeleteContainer {
         display: flex;
         height: 80%;
-        opacity: 0;
         justify-content: space-around;
+        visibility: hidden;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto 0 auto 0;
+        vertical-align: middle;
+      }
+      #editDeleteContainer:hover {
+        visibility: visible;
       }
       .editButton {
         padding: 2px;
         font-size: 10px;
+        vertical-align: middle;
       }
       .editButton:hover {
         text-decoration: underline;
@@ -124,19 +135,19 @@
     <div id='mainContainer'>
       <div id='instructionsContainer'>
         <p>Press Shift+Tab to move to the <span id='cycleThought' class='actionWord'>next thought</span>.</p>
-        <p id='copyText'>Press <span id='copyButton' class='actionWord'>copy</span> when you are done to copy your thoughts and notes to the clipboard</p>
+        <p id='copyText'>Press <span id='copyButton' class='actionWord'>copy</span> when you are done to copy your thoughts and notes to the clipboard.</p>
       </div>
       <div id='editorContainer'>
         <div id='thoughtContainer'>
           <div id='currThought' class='behind'></div>
           <input id='currThoughtInput' class='plainTextInput' type='text' placeholder='Your first thought...'>
-          <div id='editDeleteContainer' class='behind'>
+          <div id='editDeleteContainer'> 
             <div id='edit' class='editButton'>Edit</div>
             <div id='delete' class='editButton'>Delete</div>
           </div>
         </div>
         <textarea id='currNoteInput' class='behind'></textarea>
-        <input id='newThoughtInput' type='text' class='plainTextInput behind'>
+        <input id='newThoughtInput' type='text' class='plainTextInput behind' placeholder='Enter new thoughts here...'>
       </div>
     </div>
     <script src='contemplation.js'></script>

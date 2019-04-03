@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+  <meta charset='utf-8' />
+  <head>
+    <title>Contemplate</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        font-size:  16px;
+        user-select: none;
+        -moz-user-select: none;
+        font-family: Georgia, serif;
+      }
+      #mainContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 600px;
+        height: 100vh;
+        padding: 2px 0 2px 0;
+        margin: auto;
+      }
+      #thoughtContainer {
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2px;
+      }
+      #currThought {
+      }
+      #currThought:hover > #editDeleteContainer {
+        visibility: auto;
+      }
+      #currThoughtInput {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+      #editDeleteContainer {
+        display: flex;
+        height: 80%;
+        opacity: 0;
+        justify-content: space-around;
+      }
+      .editButton {
+        padding: 2px;
+        font-size: 10px;
+      }
+      .editButton:hover {
+        text-decoration: underline;
+      }
+      #currNoteInput {
+        flex-grow: 2;
+        width: 100%;
+        padding: 2px;
+        margin: 10px 0 10px 0;
+        user-select: text;
+        -moz-user-select: text;
+        background-color: transparent;
+        color: black;
+        resize: none;
+        border: none;
+        -webkit-box-shadow: 2px 2px 6px 3px rgba(0,0,0,0.75);
+        -moz-box-shadow: 2px 2px 6px 3px rgba(0,0,0,0.75);
+        box-shadow: 2px 2px 6px 3px rgba(0,0,0,0.75);
+      }
+      #thoughtInput {
+        width: 100%;
+        user-select: auto;
+        -moz-user-select: auto;
+      }
+      .behind {
+        visibility: hidden;
+      }
+      .plainTextInput {
+        background-color: transparent;
+        color: black;
+        resize: none;
+        border: none;
+        border-bottom: solid black 2px; 
+      }
+    </style>
+  </head>
+  <body>
+    <div id='mainContainer'>
+      <div id='thoughtContainer'>
+        <div id='currThought' class='behind'></div>
+        <input id='currThoughtInput' class='plainTextInput' type='text' value=''>
+        <div id='editDeleteContainer' class='behind'>
+          <div id='edit' class='editButton'>Edit</div>
+          <div id='delete' class='editButton'>Delete</div>
+        </div>
+      </div>
+      <textarea id='currNoteInput' class='behind'></textarea>
+      <input id='newThoughtInput' type='text' class='plainTextInput behind'>
+    </div>
+    <script src='contemplation.js'></script>
+  </body>

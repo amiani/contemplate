@@ -26,6 +26,8 @@ const editDeleteContainer = document.getElementById('editDeleteContainer')
 const editButton = document.getElementById('edit')
 const deleteButton = document.getElementById('delete')
 const copyButton = document.getElementById('copyButton')
+const copyText = document.getElementById('copyText')
+const cycleThoughtButton = document.getElementById('cycleThought')
 
 let focused = currThoughtInput
 currNoteInput.onfocus = e => {
@@ -65,6 +67,7 @@ const submitThoughtEdit = thought => {
     newThoughtInput.classList.remove('behind')
     currNoteInput.focus()
     focused = currNoteInput
+    showCopyInstructions()
   }
 }
 
@@ -95,10 +98,15 @@ const cycle = () => {
   currThought.innerHTML = thoughtData.thought
   currNoteInput.value = thoughtData.note ? thoughtData.note : ''
 }
+cycleThoughtButton.onclick = cycle
 
 const writeToClipboard = () => {
   data.forEach(async thoughtData => {
     console.log(thoughtData)
     await navigator.clipboard.writeText(thoughtData.thought+'\n\n'+thoughtData.note+'\n\n')
   })
+}
+
+const showCopyInstructions = () => {
+  copyText.classList.add('infront')
 }

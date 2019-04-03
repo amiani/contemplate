@@ -21,6 +21,15 @@
         height: 100vh;
         width: 100%;
       }
+      #instructionsContainer {
+        margin: 10px 0 10px 0;
+        flex-basis: 33vw;
+        padding: 5px;
+      }
+      #copyText {
+        opacity: 0;
+        transition: opacity 2s linear;
+      }
       #editorContainer {
         display: flex;
         flex-direction: column;
@@ -28,7 +37,7 @@
         width: 600px;
         height: 100%;
         padding: 2px 0 2px 0;
-        margin: auto;
+        margin-right: auto;
       }
       #thoughtContainer {
         width: 100%;
@@ -64,13 +73,17 @@
       .editButton:hover {
         text-decoration: underline;
       }
+      .actionWord {
+        text-decoration: none;
+        color: blue;
+      }
+      .actionWord:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
       #copyButton {
-        border: solid black 1px;
-        padding: 2px;
       }
       #copyButton:hover {
-        background-color: #ee855e;
-        border: black solid 2px;
       }
       #currNoteInput {
         flex-grow: 2;
@@ -95,6 +108,9 @@
       .behind {
         visibility: hidden;
       }
+      .infront {
+        opacity: 1 !important;
+      }
       .plainTextInput {
         background-color: transparent;
         color: black;
@@ -106,11 +122,14 @@
   </head>
   <body>
     <div id='mainContainer'>
-      <div id='copyButton'>Copy</div>
+      <div id='instructionsContainer'>
+        <p>Press Shift+Tab to move to the <span id='cycleThought' class='actionWord'>next thought</span>.</p>
+        <p id='copyText'>Press <span id='copyButton' class='actionWord'>copy</span> when you are done to copy your thoughts and notes to the clipboard</p>
+      </div>
       <div id='editorContainer'>
         <div id='thoughtContainer'>
           <div id='currThought' class='behind'></div>
-          <input id='currThoughtInput' class='plainTextInput' type='text' value=''>
+          <input id='currThoughtInput' class='plainTextInput' type='text' placeholder='Your first thought...'>
           <div id='editDeleteContainer' class='behind'>
             <div id='edit' class='editButton'>Edit</div>
             <div id='delete' class='editButton'>Delete</div>

@@ -16,10 +16,17 @@
       }
       #mainContainer {
         display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100vh;
+        width: 100%;
+      }
+      #editorContainer {
+        display: flex;
         flex-direction: column;
         justify-content: space-between;
         width: 600px;
-        height: 100vh;
+        height: 100%;
         padding: 2px 0 2px 0;
         margin: auto;
       }
@@ -57,6 +64,14 @@
       .editButton:hover {
         text-decoration: underline;
       }
+      #copyButton {
+        border: solid black 1px;
+        padding: 2px;
+      }
+      #copyButton:hover {
+        background-color: #ee855e;
+        border: black solid 2px;
+      }
       #currNoteInput {
         flex-grow: 2;
         width: 100%;
@@ -91,16 +106,19 @@
   </head>
   <body>
     <div id='mainContainer'>
-      <div id='thoughtContainer'>
-        <div id='currThought' class='behind'></div>
-        <input id='currThoughtInput' class='plainTextInput' type='text' value=''>
-        <div id='editDeleteContainer' class='behind'>
-          <div id='edit' class='editButton'>Edit</div>
-          <div id='delete' class='editButton'>Delete</div>
+      <div id='copyButton'>Copy</div>
+      <div id='editorContainer'>
+        <div id='thoughtContainer'>
+          <div id='currThought' class='behind'></div>
+          <input id='currThoughtInput' class='plainTextInput' type='text' value=''>
+          <div id='editDeleteContainer' class='behind'>
+            <div id='edit' class='editButton'>Edit</div>
+            <div id='delete' class='editButton'>Delete</div>
+          </div>
         </div>
+        <textarea id='currNoteInput' class='behind'></textarea>
+        <input id='newThoughtInput' type='text' class='plainTextInput behind'>
       </div>
-      <textarea id='currNoteInput' class='behind'></textarea>
-      <input id='newThoughtInput' type='text' class='plainTextInput behind'>
     </div>
     <script src='contemplation.js'></script>
   </body>

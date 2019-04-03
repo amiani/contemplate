@@ -1,5 +1,8 @@
 document.onkeydown = e => {
   e = e || window.event
+  if (focused === currNoteInput) {
+    saveNote(currNoteInput.value)
+  }
   switch (e.code) {
     case 'Enter':
       if (focused === newThoughtInput) {
@@ -22,6 +25,7 @@ const newThoughtInput = document.getElementById('newThoughtInput')
 const editDeleteContainer = document.getElementById('editDeleteContainer')
 const editButton = document.getElementById('edit')
 const deleteButton = document.getElementById('delete')
+const copyButton = document.getElementById('copyButton')
 
 let focused = currThoughtInput
 currNoteInput.onfocus = e => {
@@ -41,9 +45,16 @@ editButton.onclick = e => {
   focused = currNewThoughtInput
   currThoughtInput.value = currThought.value
 }
+copyButton.onclick = e => {
+  writeToClipboard()
+}
 
 let currThoughtIndex = 0
 const data = [{ thought:'' , note: '' }]
+
+const saveNote = note => {
+  data[currThoughtIndex].note = note
+}
 
 const submitThoughtEdit = thought => {
   if (thought !== '') {
@@ -59,8 +70,10 @@ const submitThoughtEdit = thought => {
 
 const submitNewThought = thought => {
   if (thought !== '') {
-    data.push({ thought })
+    data.push({ thought, note: '' })
     newThoughtInput.value = ''
+    currNoteInput.focus()
+    focused = currNotInput
   }
 }
 
@@ -81,4 +94,11 @@ const cycle = () => {
   const thoughtData = data[currThoughtIndex]
   currThought.innerHTML = thoughtData.thought
   currNoteInput.value = thoughtData.note ? thoughtData.note : ''
+}
+
+const writeToClipboard = () => {
+  data.forEach(async thoughtData => {
+    console.log(thoughtData)
+    await navigator.clipboard.writeText(thoughtData.thought+'\n\n'+thoughtData.note+'\n\n')
+  })
 }

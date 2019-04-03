@@ -30,6 +30,10 @@
         opacity: 0;
         transition: opacity 2s linear;
       }
+      #nextThoughtText {
+        opacity: 0;
+        transition: opacity 2s linear;
+      }
       #editorContainer {
         display: flex;
         flex-direction: column;
@@ -134,19 +138,19 @@
   <body>
     <div id='mainContainer'>
       <div id='instructionsContainer'>
-        <p>Press Shift+Tab to move to the <span id='cycleThought' class='actionWord'>next thought</span>.</p>
         <p id='copyText'>Press <span id='copyButton' class='actionWord'>copy</span> when you are done to copy your thoughts and notes to the clipboard.</p>
+        <p id='nextThoughtText'>Press Shift+Tab to move to the <span id='cycleThought' class='actionWord'>next thought</span>.</p>
       </div>
       <div id='editorContainer'>
         <div id='thoughtContainer'>
           <div id='currThought' class='behind'></div>
-          <input id='currThoughtInput' class='plainTextInput' type='text' placeholder='Your first thought...'>
+          <input id='currThoughtInput' class='plainTextInput' type='text' placeholder='Enter your first thought here...'>
           <div id='editDeleteContainer'> 
             <div id='edit' class='editButton'>Edit</div>
             <div id='delete' class='editButton'>Delete</div>
           </div>
         </div>
-        <textarea id='currNoteInput' class='behind'></textarea>
+        <textarea id='currNoteInput' class='behind' placeholder='Enter your notes here...'></textarea>
         <input id='newThoughtInput' type='text' class='plainTextInput behind' placeholder='Enter new thoughts here...'>
       </div>
     </div>

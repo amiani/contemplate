@@ -40,7 +40,6 @@ newThoughtInput.onfocus = e => {
 const toggleEditMode = () => {
   currThought.classList.toggle('behind')
   currThoughtInput.classList.toggle('behind')
-  //editDeleteContainer.classList.add('behind')
 }
 
 editButton.onclick = e => {
@@ -67,7 +66,6 @@ const submitThoughtEdit = thought => {
     newThoughtInput.classList.remove('behind')
     currNoteInput.focus()
     focused = currNoteInput
-    showCopyInstructions()
   }
 }
 
@@ -77,6 +75,7 @@ const submitNewThought = thought => {
     newThoughtInput.value = ''
     currNoteInput.focus()
     focused = currNotInput
+    showNextThoughtInstructions()
   }
 }
 
@@ -97,6 +96,7 @@ const cycle = () => {
   const thoughtData = data[currThoughtIndex]
   currThought.innerHTML = thoughtData.thought
   currNoteInput.value = thoughtData.note ? thoughtData.note : ''
+  showCopyInstructions()
 }
 cycleThoughtButton.onclick = cycle
 
@@ -109,4 +109,8 @@ const writeToClipboard = () => {
 
 const showCopyInstructions = () => {
   copyText.classList.add('infront')
+}
+
+const showNextThoughtInstructions = () => {
+  document.getElementById('nextThoughtText').classList.add('infront')
 }

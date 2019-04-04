@@ -43,7 +43,7 @@ const toggleEditMode = () => {
 }
 
 editButton.onclick = e => {
-  focused = currNewThoughtInput
+  focused = currThoughtInput
   currThoughtInput.value = currThought.value
 }
 copyButton.onclick = e => {

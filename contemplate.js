@@ -28,6 +28,8 @@ const deleteButton = document.getElementById('delete')
 const copyButton = document.getElementById('copyButton')
 const copyText = document.getElementById('copyText')
 const cycleThoughtButton = document.getElementById('cycleThought')
+const timerInput = document.getElementById('timerInput')
+const setTimerButton = document.getElementById('setTimerButton')
 
 let focused = currThoughtInput
 currNoteInput.onfocus = e => {
@@ -50,9 +52,24 @@ editButton.onclick = e => {
 copyButton.onclick = e => {
   writeToClipboard()
 }
+setTimerButton.onclick = e => {
+  setTimer(timerInput.value)
+}
 
 let currThoughtIndex = 0
 const data = [{ thought:'' , note: '' }]
+
+let timer = 0
+const setTimer = time => {
+  if (time > 0) {
+    timer = time * 60 * 1000
+    hideTimerInstruction()
+  }
+}
+const hideTimerInstruction = () => {
+  const timerInstruction = document.getElementById('timerInstruction')
+  timerInstruction.classList.remove('infront')
+}
 
 const saveNote = note => {
   data[currThoughtIndex].note = note
@@ -106,6 +123,9 @@ const writeToClipboard = async () => {
     thoughtData.thought+'\n\n'+thoughtData.note+'\n\n\n'
   )))
   await navigator.clipboard.writeText(copyData)
+}
+
+const showThoughtEdit = () => {
 }
 
 const showCopyInstructions = () => {

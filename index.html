@@ -26,12 +26,25 @@
         flex-basis: 33vw;
         padding: 5px;
       }
+      #timerInstruction {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 2s linear;
+        margin-top: 0;
+      }
+      #timerInput {
+        border: none;
+        border-bottom: solid 1px black;
+        outline: none;
+        width: 40px;
+      }
       #copyText {
         opacity: 0;
         transition: opacity 2s linear;
       }
       #nextThoughtText {
         opacity: 0;
+        visibility: hidden;
         transition: opacity 2s linear;
       }
       #editorContainer {
@@ -64,6 +77,7 @@
         top: 0;
         left: 0;
         width: 100%;
+        outline: none;
       }
       #editDeleteContainer {
         display: flex;
@@ -114,16 +128,22 @@
         -webkit-box-shadow: 2px 2px 6px 3px rgba(0,0,0,0.75);
         -moz-box-shadow: 2px 2px 6px 3px rgba(0,0,0,0.75);
         box-shadow: 2px 2px 6px 3px rgba(0,0,0,0.75);
+        outline: none;
       }
-      #thoughtInput {
+      #newThoughtInput {
         width: 100%;
         user-select: auto;
+        outline: none;
         -moz-user-select: auto;
       }
       .behind {
         visibility: hidden;
       }
+      .hiding {
+        opacity: 0;
+      }
       .infront {
+        visibility: visible !important;
         opacity: 1 !important;
       }
       .plainTextInput {
@@ -138,6 +158,7 @@
   <body>
     <div id='mainContainer'>
       <div id='instructionsContainer'>
+        <p id='timerInstruction' class='infront'><span id='setTimerButton' class='actionWord'>Set</span> your intention to focus for <input id='timerInput' type='number' min='1' max='60'> minutes.</p>
         <p id='nextThoughtText'>Press Shift+Tab to move to the <span id='cycleThought' class='actionWord'>next thought</span>.</p>
         <p id='copyText'>Press <span id='copyButton' class='actionWord'>copy</span> when you are done to copy your thoughts and notes to the clipboard.</p>
       </div>
@@ -154,5 +175,5 @@
         <input id='newThoughtInput' type='text' class='plainTextInput behind' placeholder='Enter new thoughts here...'>
       </div>
     </div>
-    <script src='contemplation.js'></script>
+    <script src='contemplate.js'></script>
   </body>

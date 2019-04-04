@@ -44,7 +44,8 @@ const toggleEditMode = () => {
 
 editButton.onclick = e => {
   focused = currThoughtInput
-  currThoughtInput.value = currThought.value
+  currThoughtInput.value = currThought.innerHTML
+  toggleEditMode()
 }
 copyButton.onclick = e => {
   writeToClipboard()

@@ -64,8 +64,8 @@ const submitThoughtEdit = thought => {
     toggleEditMode()
     currNoteInput.classList.remove('behind')
     newThoughtInput.classList.remove('behind')
-    currNoteInput.focus()
-    focused = currNoteInput
+    //currNoteInput.focus()
+    //focused = currNoteInput
   }
 }
 
@@ -74,7 +74,7 @@ const submitNewThought = thought => {
     data.push({ thought, note: '' })
     newThoughtInput.value = ''
     currNoteInput.focus()
-    focused = currNotInput
+    focused = currNoteInput
     showNextThoughtInstructions()
   }
 }
@@ -112,5 +112,6 @@ const showCopyInstructions = () => {
 }
 
 const showNextThoughtInstructions = () => {
-  document.getElementById('nextThoughtText').classList.add('infront')
+  const nextThoughtText = document.getElementById('nextThoughtText')
+  nextThoughtText.classList.add('infront')
 }

@@ -100,11 +100,11 @@ const cycle = () => {
 }
 cycleThoughtButton.onclick = cycle
 
-const writeToClipboard = () => {
-  data.forEach(async thoughtData => {
-    console.log(thoughtData)
-    await navigator.clipboard.writeText(thoughtData.thought+'\n\n'+thoughtData.note+'\n\n')
-  })
+const writeToClipboard = async () => {
+  const copyData = ''.concat(...data.map(thoughtData => (
+    thoughtData.thought+'\n\n'+thoughtData.note+'\n\n\n'
+  )))
+  await navigator.clipboard.writeText(copyData)
 }
 
 const showCopyInstructions = () => {
